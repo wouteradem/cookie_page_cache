@@ -1,0 +1,6 @@
+cookie_page_cache_form_test.test_cookie:
+  path: '/cookie_page_cache_form_test_cookie'
+  defaults:
+    _form: '\Drupal\cookie_page_cache_form_test\Form\TestForm'
+  requirements:
+    _access: 'TRUE'

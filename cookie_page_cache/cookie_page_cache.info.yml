@@ -1,0 +1,7 @@
+name: Cookie Page Cache
+description: 'Caches pages based on a cookie value for anonymous users. Use when an external page cache is not available.'
+type: module
+package: 'Performance and scalability'
+dependencies:
+  - drupal:page_cache
+core: 8.x
