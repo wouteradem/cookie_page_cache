@@ -20,13 +20,14 @@ class AdvancedPageCacheServiceProvider implements ServiceModifierInterface {
   public function alter(ContainerBuilder $container) {
     $pageCache = $container->getDefinition('http_middleware.page_cache');
     $pageCache->setClass(AdvancedPageCache::class);
+
+    // Not sure about this.
+    $pageCache->addTag('service_collector');
     $pageCache->addTag('advanced_page_cache_cid', ['priority' => 201]);
 
-    print_r($pageCache);
-    die();
     // How can we pull in custom arguments by other custom modules?
     // By naming convention? Or should the module implementer add the argument?
-    //$pageCache->addArgument(new Reference('advanced_page_cache.cid'));
+    $pageCache->addArgument(new Reference('advanced_page_cache.cid'));
   }
 
 }
