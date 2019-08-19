@@ -1,7 +1,0 @@
-parameters:
-  cookie_page_cache.cookie: john_doe
-services:
-  http_middleware.page_cache.cookie_page_cache:
-    class: \Drupal\cookie_page_cache\StackMiddleWare\CookiePageCache
-    decorates: http_middleware.page_cache
-    arguments: ['@http_middleware.page_cache.cookie_page_cache.inner', '%cookie_page_cache.cookie%']

@@ -1,0 +1,7 @@
+name: Cookie Internal Page Cache
+description: 'Caches pages based on a cookie value for anonymous users.'
+type: module
+package: 'Performance and scalability'
+dependencies:
+  - drupal:advanced_page_cache
+core: 8.x

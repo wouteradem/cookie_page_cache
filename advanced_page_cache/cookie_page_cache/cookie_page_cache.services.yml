@@ -1,0 +1,8 @@
+parameters:
+  advanced_page_cache.cookie.cid: john_doe
+services:
+  advanced_page_cache.cookie:
+    class: \Drupal\cookie_page_cache\Services\CookiePageCache
+    arguments: ['%advanced_page_cache.cookie.cid%']
+    tags:
+      - { name: advanced_page_cache_cid }

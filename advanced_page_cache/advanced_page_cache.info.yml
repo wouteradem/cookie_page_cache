@@ -1,0 +1,7 @@
+name: Advanced Internal Page Cache
+description: 'Allows to extend the caching of pages for anonymous users. '
+type: module
+package: 'Performance and scalability'
+dependencies:
+  - drupal:page_cache
+core: 8.x
