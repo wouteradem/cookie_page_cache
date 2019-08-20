@@ -11,7 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AdvancedPageCache extends PageCache implements AdvancedPageCacheInterface {
 
-  private $caches = [];
+  /**
+   * Holds an array of cache IDs.
+   *
+   * @var \Drupal\advanced_page_cache\AdvancedPageCacheInterface[]
+   */
+  protected $caches = [];
 
   /**
    * Gets the page cache ID for this request.
@@ -40,10 +45,20 @@ class AdvancedPageCache extends PageCache implements AdvancedPageCacheInterface 
     return $this->cid;
   }
 
+  /**
+   * @param \Drupal\advanced_page_cache\AdvancedPageCacheInterface $cache
+   *   A service object.
+   *
+   * @return \Drupal\advanced_page_cache\AdvancedPageCacheInterface[] $caches
+   *   Array of Services that implement AdvancedPageCacheInterface.
+   */
   public function addCacheId(AdvancedPageCacheInterface $cache) {
     $this->caches[] = $cache;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function setCacheId(Request $request) {
     $cid_parts = [];
     foreach ($this->caches as $cache) {
