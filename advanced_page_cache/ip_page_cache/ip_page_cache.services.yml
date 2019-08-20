@@ -1,0 +1,8 @@
+parameters:
+  advanced_page_cache.ip.cid: ip
+services:
+  advanced_page_cache.ip:
+    class: \Drupal\ip_page_cache\Ip\IpPageCache
+    arguments: ['%advanced_page_cache.ip.cid%']
+    tags:
+      - { name: advanced_page_cache_cid }

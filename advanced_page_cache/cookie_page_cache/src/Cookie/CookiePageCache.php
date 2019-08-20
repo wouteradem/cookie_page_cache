@@ -5,7 +5,7 @@ namespace Drupal\cookie_page_cache\Cookie;
 use Drupal\advanced_page_cache\AdvancedPageCacheInterface;
 use Symfony\Component\HttpFoundation\Request;
 
-class CookiePageCache implements AdvancedPageCacheInterface{
+class CookiePageCache implements AdvancedPageCacheInterface {
 
   private $cookie;
 
