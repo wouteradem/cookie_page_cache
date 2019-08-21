@@ -8,8 +8,8 @@ use Drupal\advanced_page_cache\StackMiddleware\AdvancedPageCache;
 
 /**
  * Overrides the Page Cache service to point to Advanced page Cache's module one.
- * Adds a service_collector Service Tag with Tag advanced_page_cache_cid.
- * Adds an Argument to pass the variable
+ * Adds a service_collector Service Tag with Tag advanced_page_cache_cid
+ * and a call method addCacheId.
  */
 class AdvancedPageCacheServiceProvider implements ServiceModifierInterface {
 
