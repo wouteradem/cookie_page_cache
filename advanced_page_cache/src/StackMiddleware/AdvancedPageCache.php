@@ -16,7 +16,7 @@ class AdvancedPageCache extends PageCache implements AdvancedPageCacheInterface 
    *
    * @var \Drupal\advanced_page_cache\AdvancedPageCacheInterface[]
    */
-  protected $caches = [];
+  protected $cacheIds = [];
 
   /**
    * Gets the page cache ID for this request.
@@ -33,27 +33,22 @@ class AdvancedPageCache extends PageCache implements AdvancedPageCacheInterface 
         $request->getSchemeAndHttpHost() . $request->getRequestUri(),
         $request->getRequestFormat(NULL),
       ];
-      // TODO: Rework -> this looks ugly...
-      $additional_parts = $this->setCacheId($request);
-      foreach ($additional_parts as $cid_part) {
-        $cid_parts[] = $cid_part;
-      }
-      // Add the array to the end of $cid_parts.
       $this->cid = implode(':', $cid_parts);
+      $this->cid .= $this->setCacheId($request);
     }
-
+    
     return $this->cid;
   }
 
   /**
-   * @param \Drupal\advanced_page_cache\AdvancedPageCacheInterface $cache
+   * @param \Drupal\advanced_page_cache\AdvancedPageCacheInterface $cacheId
    *   A service object.
    *
-   * @return \Drupal\advanced_page_cache\AdvancedPageCacheInterface[] $caches
+   * @return \Drupal\advanced_page_cache\AdvancedPageCacheInterface[] $cacheIds
    *   Array of Services that implement AdvancedPageCacheInterface.
    */
-  public function addCacheId(AdvancedPageCacheInterface $cache) {
-    $this->caches[] = $cache;
+  public function addCacheId(AdvancedPageCacheInterface $cacheId) {
+    $this->cacheIds[] = $cacheId;
   }
 
   /**
@@ -61,10 +56,10 @@ class AdvancedPageCache extends PageCache implements AdvancedPageCacheInterface 
    */
   public function setCacheId(Request $request) {
     $cid_parts = [];
-    foreach ($this->caches as $cache) {
-      $cid_parts[] = $cache->setCacheId($request);
+    foreach ($this->cacheIds as $cacheId) {
+      $cid_parts[] = $cacheId->setCacheId($request);
     }
 
-    return $cid_parts;
+    return implode(':', $cid_parts);
   }
 }
