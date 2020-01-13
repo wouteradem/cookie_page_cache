@@ -57,7 +57,7 @@ class AdvancedPageCache extends PageCache implements AdvancedPageCacheInterface 
   public function setCacheId(Request $request) {
     $cid_parts = [];
     foreach ($this->cacheIds as $cacheId) {
-      $cid_parts[] = $cacheId->setCacheId($request);
+      $cid_parts[] = $cacheId->getAdditionalCacheIdPart($request);
     }
 
     return implode(':', $cid_parts);

@@ -19,8 +19,14 @@ class IpPageCache implements AdvancedPageCacheInterface {
     $this->ip = $ip;
   }
 
-  public function setCacheId(Request $request) {
-    return '192.168.0.233';
+  /**
+   * Adds the IP address to the page cache ID for this request.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   A request object.
+   */
+  public function getAdditionalCacheIdPart(Request $request) {
+    return Request::getClientIp();
   }
 
 }

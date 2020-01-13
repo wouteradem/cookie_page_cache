@@ -19,8 +19,14 @@ class CookiePageCache implements AdvancedPageCacheInterface {
     $this->cookie = $cookie;
   }
 
-  public function setCacheId(Request $request) {
-    return $request->cookies->get($this->cookie, 'default');
+  /**
+   * Adds a cookie value to the page cache ID for this request.
+   *
+   * @param \Symfony\Component\HttpFoundation\Request $request
+   *   A request object.
+   */
+  public function getAdditionalCacheIdPart(Request $request) {
+    return $request->cookies->get('COOKIE NAME', 'default');
   }
 
 }

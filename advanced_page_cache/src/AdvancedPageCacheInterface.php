@@ -12,11 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 interface AdvancedPageCacheInterface {
 
   /**
-   * Adds a page cache ID for this request.
+   * Adds an additional part to the page cache ID for this request.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   A request object.
    */
-  public function setCacheId(Request $request);
+  public function getAdditionalCacheIdPart(Request $request);
 
 }
